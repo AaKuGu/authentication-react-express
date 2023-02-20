@@ -10,10 +10,7 @@ router.get("/login/failed", (req, res) => {
   });
 });
 
-// router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
-router.get("/google", (req,res) =>{
-    res.send("running")
-});
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 router.get(
   "/google/callback",
