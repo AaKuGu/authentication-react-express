@@ -1,7 +1,7 @@
 import express from "express";
 // import dotenv from "dotenv";
 import passport from "passport";
-import { router } from "./router/authRouter";
+// import { router } from "./router/authRouter";
 
 // dotenv.config();
 
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.status(200).send({ message: "api is working...!" });
 });
 
-router.get("/auth/google", (req, res) => {
+app.get("/auth/google", (req, res) => {
   const name = "Aadarsh";
   res.send(200).send({ name: name });
 });
