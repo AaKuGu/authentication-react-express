@@ -10,3 +10,5 @@ const app = express();
 app.get("/", (req, res) => {
   res.status(200).send({ message: "api is working...!" });
 });
+
+app.listen(process.env.PORT);
