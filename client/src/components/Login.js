@@ -31,7 +31,7 @@ const Login = () => {
               <span>Facebook</span>
             </Link>
             <Link
-              to="/"
+              to="https://authentication-react-express-server.vercel.app/auth/google"
               className="border-2 bg-yellow-700  rounded-lg px-10 py-3 flex items-center justify-start gap-5 w-full"
             >
               <AiFillGoogleCircle /> Google
