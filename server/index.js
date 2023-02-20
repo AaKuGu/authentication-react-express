@@ -10,10 +10,15 @@ const app = express();
 app.use(passport.initialize());
 
 // const PORT = process.env.PORT
-app.use("/auth", router);
+// app.use("/auth", router);
 
 app.get("/", (req, res) => {
   res.status(200).send({ message: "api is working...!" });
+});
+
+router.get("/auth/google", (req, res) => {
+  const name = "Aadarsh";
+  res.send(200).send({ name: name });
 });
 
 app.listen(process.env.PORT);
