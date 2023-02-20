@@ -1,9 +1,16 @@
 import React from "react";
+import { posts } from "../data";
+import Card from "./Card";
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-blue">
-      hi
+    <div
+      className="w-full flex items-center justify-center h-full  gap-10 px-10 py-10"
+      
+    >
+      {posts.map((item, i) => {
+        return <Card item={item} />;
+      })}
     </div>
   );
 };
