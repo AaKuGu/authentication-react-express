@@ -5,7 +5,7 @@ import Card from "./Card";
 const Home = () => {
   return (
     <div
-      className="w-full flex items-center justify-center h-full  gap-10 px-10 py-10"
+      className="w-full flex items-start justify-center h-full  gap-10 px-10 py-20"
       
     >
       {posts.map((item, i) => {
