@@ -1,24 +1,5 @@
-const Router = require("express.router");
+const router = require("express").Router();
 const passport = require("passport");
-
-export const router = Router();
-
-router.get("/login/failed", (req, res) => {
-  res.status(400).json({
-    success: false,
-    message: "failure",
-  });
-});
-
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
-
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_API,
-    failureRedirect: "/login/failed",
-  })
-);
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
@@ -28,6 +9,22 @@ router.get("/login/success", (req, res) => {
       user: req.user,
     });
   }
+});
+
+router.get("/login/failed", (req, res) => {
+  res.status(400).json({
+    success: false,
+    message: "failure",
+  });
+});
+
+// router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+router.get("/google/callback", (req, res) => {
+  passport.authenticate("google", {
+    successRedirect: process.env.CLIENT_API,
+    failureRedirect: "/login/failed",
+  });
 });
 
 router.get("/logout", (req, res) => {
