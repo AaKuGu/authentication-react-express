@@ -2,32 +2,54 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/login/success", (req, res) => {
-  if (req.user) {
-    res.status(200).json({
-      success: true,
-      message: "successfull",
-      user: req.user,
-    });
+  try {
+    if (req.user) {
+      res.status(200).json({
+        success: true,
+        message: "successfull",
+        user: req.user,
+      });
+    }
+  } catch (error) {
+    res.status(400).send("error /login/success : ", error.message);
   }
 });
 
 router.get("/login/failed", (req, res) => {
-  res.status(400).json({
-    success: false,
-    message: "failure",
-  });
+  try {
+    res.status(400).json({
+      success: false,
+      message: "failure",
+    });
+  } catch (error) {
+    res.status(400).send("error /login/success : ", error.message);
+  }
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/google", (req, res) => {
+  try {
+    passport.authenticate("google", { scope: ["profile"] });
+  } catch (error) {
+    res.status(400).send("error /login/success : ", error.message);
+  }
+});
 
 router.get("/google/callback", (req, res) => {
-  passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_API,
-    failureRedirect: "/login/failed",
-  });
+  try {
+    passport.authenticate("google", {
+      successRedirect: process.env.CLIENT_API,
+      failureRedirect: "/login/failed",
+    });
+  } catch (error) {
+    res.status(400).send("error /login/success : ", error.message);
+  }
 });
 
 router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect(process.env.CLIENT_API);
+  try {
+    req.logout();
+    res.redirect(process.env.CLIENT_API);
+  } catch (error) {
+    res.status(400).send("error /login/success : ", error.message);
+  }
 });
