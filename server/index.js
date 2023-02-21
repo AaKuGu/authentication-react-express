@@ -1,8 +1,8 @@
-import express from "express";
+const express = require("express");
 // import dotenv from "dotenv";
-import passport from "passport";
-import { router } from "./router/authRouter";
-import cors from "cors";
+const passport = require("passport");
+const router = require("./router/authRouter");
+const cors = require("cors");
 
 // dotenv.config();
 

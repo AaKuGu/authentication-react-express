@@ -1,5 +1,5 @@
-import { Router } from "express";
-import passport from "passport";
+const Router = require("express.router");
+const passport = require("passport");
 
 export const router = Router();
 
