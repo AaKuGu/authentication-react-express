@@ -9,6 +9,7 @@ const App = () => {
   return (
     <div className="app_container h-screen">
       <BrowserRouter>
+        <p>delete this line as soon as possible!</p>
         <Navbar user={user} />
         <div
           className="flex items-center justify-center "
